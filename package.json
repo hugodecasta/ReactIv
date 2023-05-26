@@ -1,5 +1,5 @@
 {
-  "name": "reactiv",
+  "name": "react-iv",
   "version": "0.1.0",
   "description": "ReactIv",
   "main": "index.js",
@@ -13,9 +13,21 @@
     "type": "git",
     "url": "git@github.com:hugodecasta/ReactIv.git"
   },
-  "keywords": [],
+  "keywords": [
+    "ReactIv",
+    "Reactive",
+    "framework",
+    "JS",
+    "web",
+    "browser",
+    "Vanilla JS"
+  ],
   "author": "Hugo Castaneda",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hugodecasta/ReactIv/issues"
+  },
+  "homepage": "https://github.com/hugodecasta/ReactIv#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-terser": "^0.4.3",

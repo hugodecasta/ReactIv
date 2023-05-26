@@ -109,8 +109,7 @@ async function bundle() {
             terser({
                 mangle: false,
                 format: {
-                    comments: (a, comment) => {
-                        console.log(comment.value)
+                    comments: (_, comment) => {
                         return comment.value.includes('*\n     *')
                     }
                 }
