@@ -28,9 +28,14 @@ async function bundler_entry() {
     if (bundling) return
     bundling = true
 
-    console.log('bundling...')
-    await bundle()
-    console.log('bundle done !')
+    try {
+
+        console.log('bundling...')
+        await bundle()
+        console.log('bundle done !')
+    } catch (e) {
+        console.log('error while bundling !')
+    }
 
     if (LIVE) {
         setTimeout(() => bundling = false, allow_bundle_timer)
@@ -48,9 +53,26 @@ if (LIVE) {
     await bundler_entry()
 }
 
-// ----------------------------------------------- BUNDLER
+// ----------------------------------------------- BUNDLERS
+
+async function bundleMD2() {
+    const all_MD2 = fs.readdirSync('./src/MD2')
+        .filter(e => e != '__index__.js')
+    const code_lines = [
+        'const MD2={}',
+        ...all_MD2.map(file => {
+            const comp_name = file.replace('.js', '')
+            return `import ${comp_name} from "./${file}"\nMD2["${comp_name}"] = ${comp_name}`
+        }),
+        'export default MD2'
+    ]
+    const code = code_lines.join('\n')
+    fs.writeFileSync('./src/MD2/__index__.js', code)
+}
 
 async function bundle() {
+
+    await bundleMD2()
 
     // -------------------------- INPUT OPTIONS
     const input_options = {

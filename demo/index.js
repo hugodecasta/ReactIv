@@ -1,3 +1,4 @@
+import MyComponent from "./MyComponent.js"
 import ReactIv from "./reactiv.js"
 
-console.log(ReactIv.actions.sayHello())
+ReactIv.init('root', MyComponent())

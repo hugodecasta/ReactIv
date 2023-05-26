@@ -1,3 +1,6 @@
+# specifis
+./src/*/*__*
+
 # Logs
 logs
 *.log

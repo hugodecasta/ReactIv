@@ -1,1 +1,1 @@
-function sayHello(){return console.log("Hello !!!")}const ReactIv={actions:{sayHello:sayHello},data:{sayHello:sayHello}};export default ReactIv;
+class Component{}var CORE=Object.freeze({__proto__:null,Component:Component,Reacter:class{value=void 0;constructor(default_value){this.value=default_value}},init:function(element_id,component){}});function App(){return new Component}function Button(){return new Component}const MD2$1={};MD2$1.App=App,MD2$1.Button=Button;const MD2={};MD2.App=App,MD2.Button=Button,MD2.index=MD2$1;const ReactIv={MD2:MD2,...CORE};export default ReactIv;
