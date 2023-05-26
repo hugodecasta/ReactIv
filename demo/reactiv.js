@@ -1,1 +1,0 @@
-class Component{}const MD2={App:function(){return new Component},Button:function(){return new Component}},ReactIv={MD2:MD2,...Object.freeze({__proto__:null,Component:Component,Reacter:class{value=void 0;constructor(default_value){this.value=default_value}},init:function(element_id,component){}})};export default ReactIv;
