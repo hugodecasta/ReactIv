@@ -63,4 +63,26 @@ ReactIv.init("root", MyComponent())
 
 ## Demo
 
-### Installation
+One can launch the demo front using the following command:
+
+`PORT=8989 npx http-server ./demo`
+
+## DEV
+
+### installation
+
+```shell
+git clone git@github.com:hugodecasta/ReactIv.git
+
+cd reactiv
+
+npm i
+```
+
+### Build
+
+`npm run build` or `node build.js`
+
+### Build hotreload
+
+`npm run build-live` or `node build.js -live`

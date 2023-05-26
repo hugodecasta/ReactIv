@@ -1,6 +1,6 @@
 {
   "name": "reactiv-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ReactIv",
   "main": "index.js",
   "type": "module",
@@ -34,8 +34,5 @@
     "chokidar": "^3.5.3",
     "rollup": "^3.23.0",
     "uuid": "^9.0.0"
-  },
-  "dependencies": {
-    "reactivjs": "^0.1.0"
   }
 }
