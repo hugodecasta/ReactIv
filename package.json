@@ -9,12 +9,18 @@
     "build": "node build",
     "build-live": "node build -live"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hugodecasta/ReactIv.git"
+  },
   "keywords": [],
   "author": "Hugo Castaneda",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-terser": "^0.4.3",
     "chokidar": "^3.5.3",
     "rollup": "^3.23.0",
-    "@rollup/plugin-terser": "^0.4.3"
+    "uuid": "^9.0.0"
   }
 }

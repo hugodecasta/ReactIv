@@ -14,11 +14,22 @@ ReactIv
 import ReactIv from "ReactIv"
 const { MD2 } = ReactIv
 
-// ---- Create simple reactive variable
+// ---- create a simple counter reacter
 const counter = new ReactIv.Reacter(0)
 
 export default function MyComponent() {
-  return MD2.App().add(MD2.Button("Value: ", counter))
+  // ---- create button
+  const counter_button = MD2.Button("Value: ", counter)
+
+  // ---- assign click event
+  counter_button.click(() => (counter.value += 1))
+
+  // ---- create app component
+  const App = MD2.App()
+  App.add(counter_button)
+
+  // ---- return component
+  return App
 }
 ```
 
@@ -28,6 +39,7 @@ export default function MyComponent() {
 import ReactIv from "ReactIv"
 import MyComponent from "./MyComponent.js"
 
+// ---- Create app from my component
 ReactIv.init("root", MyComponent())
 ```
 

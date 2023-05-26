@@ -2,6 +2,7 @@ import chokidar from 'chokidar'
 import fs from 'fs'
 import { rollup } from 'rollup'
 import terser from '@rollup/plugin-terser'
+import resolve from '@rollup/plugin-node-resolve'
 
 // ----------------------------------------------- ARGS
 
@@ -35,6 +36,7 @@ async function bundler_entry() {
         console.log('bundle done !')
     } catch (e) {
         console.log('error while bundling !')
+        console.error(e)
     }
 
     if (LIVE) {
@@ -55,36 +57,65 @@ if (LIVE) {
 
 // ----------------------------------------------- BUNDLERS
 
-async function bundleMD2() {
-    const all_MD2 = fs.readdirSync('./src/MD2')
-        .filter(e => e != '__index__.js')
-    const code_lines = [
-        'const MD2={}',
-        ...all_MD2.map(file => {
-            const comp_name = file.replace('.js', '')
-            return `import ${comp_name} from "./${file}"\nMD2["${comp_name}"] = ${comp_name}`
-        }),
-        'export default MD2'
-    ]
-    const code = code_lines.join('\n')
-    fs.writeFileSync('./src/MD2/__index__.js', code)
+const inner_builds = [
+    './src/MD2',
+    './src/core',
+]
+
+async function inn_bundler() {
+
+    const entry_name = '__index__.js'
+
+    for (const inner_dir of inner_builds) {
+
+        const module_name = inner_dir.split('/').pop()
+
+        const inner_files = fs.readdirSync(inner_dir)
+            .filter(e => e != entry_name)
+        const code_lines = [
+            `const ${module_name}={}`,
+            ...inner_files.map(file => {
+                const comp_name = file.replace('.js', '')
+                return `import ${comp_name} from "./${file}"`
+            }),
+            'export default { ' + inner_files.map(file => {
+                const comp_name = file.replace('.js', '')
+                return comp_name
+            }).join(',') + ' } ',
+        ]
+        const code = code_lines.join('\n')
+        fs.writeFileSync(`${inner_dir}/${entry_name}`, code)
+    }
 }
 
 async function bundle() {
 
-    await bundleMD2()
+    await inn_bundler()
 
     // -------------------------- INPUT OPTIONS
     const input_options = {
         input: ENTRY_PATH,
-        treeshake: true
+        treeshake: true,
+        plugins: [
+            resolve({
+                moduleDirectories: ['node_modules']
+            })
+        ]
     }
     // -------------------------- OUTPUT OPTIONS
     const base_output_options = {
         format: 'es',
-        plugins: [terser({
-            mangle: false
-        })]
+        plugins: [
+            terser({
+                mangle: false,
+                format: {
+                    comments: (a, comment) => {
+                        console.log(comment.value)
+                        return comment.value.includes('*\n     *')
+                    }
+                }
+            }),
+        ],
     }
 
     // -------------------------- BUNDLE PROCESS
