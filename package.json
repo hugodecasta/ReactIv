@@ -1,0 +1,17 @@
+{
+  "name": "reactiv",
+  "version": "0.1.0",
+  "description": "ReactIv",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Hugo Castaneda",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "rollup": "^3.23.0"
+  }
+}
