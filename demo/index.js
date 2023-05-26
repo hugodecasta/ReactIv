@@ -1,3 +1,3 @@
 import ReactIv from "./reactiv.js"
 
-ReactIv.actions.sayHello()
+console.log(ReactIv.actions.sayHello())
