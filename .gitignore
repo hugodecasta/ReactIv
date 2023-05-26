@@ -1,5 +1,7 @@
 # specifis
-./src/*
+src/*
+src/
+src
 
 # Logs
 logs
