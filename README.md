@@ -4,14 +4,14 @@ ReactIv
 
 ## Installation
 
-`npm i ReactIv`
+`npm i reactiv-js`
 
 ## Usage
 
 `MyComponent.js`
 
 ```javascript
-import ReactIv from "ReactIv"
+import ReactIv from "reactiv-js"
 const { MD2 } = ReactIv
 
 // ---- create a simple counter reacter
@@ -36,7 +36,7 @@ export default function MyComponent() {
 `index.js`
 
 ```javascript
-import ReactIv from "ReactIv"
+import ReactIv from "reactiv-js"
 import MyComponent from "./MyComponent.js"
 
 // ---- Create app from my component
