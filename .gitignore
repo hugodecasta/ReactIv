@@ -1,7 +1,5 @@
 # specifis
-src/*
-src/
-src
+demo/
 
 # Logs
 logs
